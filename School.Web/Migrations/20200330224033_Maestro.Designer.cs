@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using School.Web.Data;
 
 namespace School.Web.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20200330224033_Maestro")]
+    partial class Maestro
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -65,23 +67,6 @@ namespace School.Web.Migrations
                     b.ToTable("Students");
                 });
 
-            modelBuilder.Entity("School.Web.Data.Entities.Subject", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<double>("Credits");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Subjects");
-                });
-
             modelBuilder.Entity("School.Web.Data.Entities.Teacher", b =>
                 {
                     b.Property<int>("Id")
@@ -123,7 +108,7 @@ namespace School.Web.Migrations
             modelBuilder.Entity("School.Web.Data.Entities.Teacher", b =>
                 {
                     b.HasOne("School.Web.Data.Entities.Gender", "Gender")
-                        .WithMany("Teachers")
+                        .WithMany()
                         .HasForeignKey("GenderId");
                 });
 #pragma warning restore 612, 618
