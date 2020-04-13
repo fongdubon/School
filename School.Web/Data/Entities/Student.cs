@@ -33,7 +33,8 @@
 
         [Display(Name = "Nombre completo")]
         public string FullName => $"{LastName} {FirstName}";
-
+        
+        [Display(Name = "Género")]
         public Gender Gender { get; set; }
     }
 }

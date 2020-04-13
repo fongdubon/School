@@ -19,13 +19,11 @@ namespace School.Web.Controllers
             _context = context;
         }
 
-        // GET: Genders
         public async Task<IActionResult> Index()
         {
             return View(await _context.Genders.ToListAsync());
         }
 
-        // GET: Genders/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -43,18 +41,14 @@ namespace School.Web.Controllers
             return View(gender);
         }
 
-        // GET: Genders/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Genders/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name")] Gender gender)
+        public async Task<IActionResult> Create(Gender gender)
         {
             if (ModelState.IsValid)
             {
