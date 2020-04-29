@@ -8,16 +8,6 @@
         public int Id { get; set; }
 
         [Required(ErrorMessage = "{0} es requerido")]
-        [MaxLength(30, ErrorMessage = "El campo {0} no puede tener mas de {1} caracteres")]
-        [Display(Name = "Nombre")]
-        public string FirstName { get; set; }
-
-        [Required(ErrorMessage = "{0} es requerido")]
-        [MaxLength(30, ErrorMessage = "El campo {0} no puede tener mas de {1} caracteres")]
-        [Display(Name = "Apellidos")]
-        public string LastName { get; set; }
-
-        [Required(ErrorMessage = "{0} es requerido")]
         [MaxLength(10, ErrorMessage = "El campo {0} no puede tener mas de {1} caracteres")]
         [Display(Name = "Clave")]
         public string Key { get; set; }
@@ -31,9 +21,6 @@
         [Display(Name = "Fotografía")]
         public string ImageUrl { get; set; }
 
-        [Display(Name = "Nombre completo")]
-        public string FullName => $"{LastName} {FirstName}";
-
-        public Gender Gender { get; set; }
+        public User User { get; set; }
     }
 }
