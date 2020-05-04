@@ -13,7 +13,5 @@ namespace School.Web.Data.Entities
         [Display(Name = "Género")]
         public string Name { get; set; }
 
-        public ICollection<Student> Students { get; set; }
-        public ICollection<Teacher> Teachers { get; set; }
     }
 }

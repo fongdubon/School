@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using School.Web.Data;
 
 namespace School.Web.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20200430104519_usuario")]
+    partial class usuario
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -144,21 +146,6 @@ namespace School.Web.Migrations
                     b.ToTable("Genders");
                 });
 
-            modelBuilder.Entity("School.Web.Data.Entities.Manager", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("UserId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Managers");
-                });
-
             modelBuilder.Entity("School.Web.Data.Entities.Student", b =>
                 {
                     b.Property<int>("Id")
@@ -171,11 +158,15 @@ namespace School.Web.Migrations
                         .IsRequired()
                         .HasMaxLength(10);
 
+                    b.Property<int?>("GenderId");
+
                     b.Property<string>("ImageUrl");
 
                     b.Property<string>("UserId");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("GenderId");
 
                     b.HasIndex("UserId");
 
@@ -205,6 +196,8 @@ namespace School.Web.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("GenderId");
+
                     b.Property<DateTime>("HireDate");
 
                     b.Property<string>("ImageUrl");
@@ -216,6 +209,8 @@ namespace School.Web.Migrations
                     b.Property<string>("UserId");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("GenderId");
 
                     b.HasIndex("UserId");
 
@@ -330,15 +325,12 @@ namespace School.Web.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("School.Web.Data.Entities.Manager", b =>
-                {
-                    b.HasOne("School.Web.Data.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-                });
-
             modelBuilder.Entity("School.Web.Data.Entities.Student", b =>
                 {
+                    b.HasOne("School.Web.Data.Entities.Gender")
+                        .WithMany("Students")
+                        .HasForeignKey("GenderId");
+
                     b.HasOne("School.Web.Data.Entities.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
@@ -346,6 +338,10 @@ namespace School.Web.Migrations
 
             modelBuilder.Entity("School.Web.Data.Entities.Teacher", b =>
                 {
+                    b.HasOne("School.Web.Data.Entities.Gender")
+                        .WithMany("Teachers")
+                        .HasForeignKey("GenderId");
+
                     b.HasOne("School.Web.Data.Entities.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
