@@ -30,7 +30,7 @@
 
             if (!dataContext.Managers.Any())
             {
-                var manager = await CheckUserAsync("Fong Dubon", "Eduardo", "eduardofongdubon@hotmail.com", "2225259549", "123456", "Admin");
+                var manager = await CheckUserAsync("Fong Dubon", "Eduardo", "eduardofongdubon@hotmail.com", "2222222222", "123456", "Admin");
                 await CheckManagersAsync(manager);
             }
         }
