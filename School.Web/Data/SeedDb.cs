@@ -25,6 +25,7 @@
             await userHelper.CheckRoleAsync("Admin");
             await userHelper.CheckRoleAsync("Teacher");
             await userHelper.CheckRoleAsync("Student");
+            await userHelper.CheckRoleAsync("Coordinator");
 
             await CheckGendersAsync();
 

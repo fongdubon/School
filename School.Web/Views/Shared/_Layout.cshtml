@@ -30,13 +30,25 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                    <li><a asp-area="" asp-controller="Genders" asp-action="Index">Géneros</a></li>
-                    <li><a asp-area="" asp-controller="Subjects" asp-action="Index">Materias</a></li>
-                    <li><a asp-area="" asp-controller="Students" asp-action="Index">Estudiantes</a></li>
-                </ul>
+                    @if (this.User.Identity.IsAuthenticated)
+                    {
+                        //@if (this.User.IsInRole("Teacher"))
+                        //{
+                            <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                        //}
+                        //@if (this.User.IsInRole("Student"))
+                        //{
+                            <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                        //}
+                        //@if (this.User.IsInRole("Coordinator"))
+                        //{
+                            <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                        //}
+                            <li><a asp-area="" asp-controller="Genders" asp-action="Index">Géneros</a></li>
+                        }
+                        <li><a asp-area="" asp-controller="Subjects" asp-action="Index">Materias</a></li>
+                        <li><a asp-area="" asp-controller="Students" asp-action="Index">Estudiantes</a></li>
+                    </ul>
                 <ul class="nav navbar-nav navbar-right">
                     @if (this.User.Identity.IsAuthenticated)
                     {
@@ -46,6 +58,7 @@
                     else
                     {
                         <li><a asp-area="" asp-controller="Account" asp-action="Login">Login</a></li>
+                        <li><a asp-area="" asp-controller="Account" asp-action="Register">Register</a></li>
                     }
                 </ul>
             </div>

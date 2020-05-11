@@ -88,7 +88,10 @@
                         this.ModelState.AddModelError(string.Empty,"The user couldn't registered");
                         return View(model);
                     }
-                    await this.userHelper.AddUserToRoleAsync(user, "Admin");
+                    //await this.userHelper.AddUserToRoleAsync(user, "Admin");
+                    await this.userHelper.AddUserToRoleAsync(user, "Teacher");
+                    //await this.userHelper.AddUserToRoleAsync(user, "Student");
+                    //await this.userHelper.AddUserToRoleAsync(user, "Coordinator");
                     var result2 = await this.userHelper.LoginAsync(
                         model.UserName,
                         model.Password,
