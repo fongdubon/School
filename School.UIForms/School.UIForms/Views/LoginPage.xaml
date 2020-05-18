@@ -10,7 +10,7 @@
              >
     <ContentPage.Content>
         <ScrollView BindingContext="{Binding Login}">
-            <StackLayout Padding="10px">
+            <StackLayout Padding="10">
                 <!-- Place new controls here -->
                 <Image
                 Source="pastel"
