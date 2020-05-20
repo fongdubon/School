@@ -14,7 +14,26 @@
             <ListView
                 HasUnevenRows="True"
                 ItemsSource="{Binding Subjects}}">
-                
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0"
+                                    Text="{Binding Name}">
+
+                                </Label>
+                                <Label Grid.Column="1"
+                                    Text="{Binding Credits}">
+
+                                </Label>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
             </ListView>
         </StackLayout>
     </ContentPage.Content>

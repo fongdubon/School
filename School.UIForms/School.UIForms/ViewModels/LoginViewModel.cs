@@ -1,6 +1,7 @@
 ﻿namespace School.UIForms.ViewModels
 {
 	using GalaSoft.MvvmLight.Command;
+	using School.UIForms.Views;
 	using System;
 	using System.Windows.Input;
     using Xamarin.Forms;
@@ -37,10 +38,12 @@
 					"Accept");
 				return;
 			}
-			await Application.Current.MainPage.DisplayAlert(
-					"LISTOOO",
-					"OK",
-					"Accept");
+			//await Application.Current.MainPage.DisplayAlert(
+			//		"LISTOOO",
+			//		"OK",
+			//		"Accept");
+			MainViewModel.GetInstance().Subjects = new SubjectsViewModel();
+			await Application.Current.MainPage.Navigation.PushAsync(new SubjectsPage());
 			return;
 		}
 		public LoginViewModel()

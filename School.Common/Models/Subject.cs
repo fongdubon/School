@@ -11,5 +11,10 @@
         
         [JsonProperty("credits")]
         public double Credits { get; set; }
+
+        public override string ToString()
+        {
+            return $"{this.Name}  {this.Credits}";
+        }
     }
 }
