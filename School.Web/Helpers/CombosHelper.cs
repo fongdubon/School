@@ -13,10 +13,7 @@
         {
             this.dataContext = dataContext;
         }
-        //public IEnumerable<SelectListItem> GetComboRole()
-        //{
 
-        //}
         public IEnumerable<SelectListItem> GetComboGenders()
         {
             var list = dataContext.Genders.Select(
